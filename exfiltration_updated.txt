@@ -1,0 +1,17 @@
+
+
+Attack execution:
+
+First make sure the proton server is running. Then run the exfiltration script:
+
+python3 exfiltrate_encrypted_inbox.py
+
+This script reads the encrypted inbox file at leaked_app/inboxes/114-111-111-116.inbox, converts it to hexadecimal format, packages it as a ChatMax message, and sends it to inhibitor's inbox using the messaging API with scrambled parameters.
+
+After running the script, log in as inhibitor with password 123456 and check the inbox. There will be a message with subject ROOT_INBOX containing the hex-encoded encrypted inbox data.
+
+The attack works because we have read access to the inbox files on the server and can send messages to any user through the ChatMax API. The scramble function converts strings to ASCII codes separated by dashes, which is the format ChatMax expects for URL parameters.
+
+Once the attacker receives the encrypted inbox, they can decrypt it using the keys we found in Part 1 to read root's actual messages.
+
+The file exfiltrate_encrypted_inbox.py contains the complete working implementation of this attack.

@@ -1,0 +1,41 @@
+
+Root Mailbox Exfiltration Attack
+
+This attack exploits an XSS vulnerability in ChatMax to steal root's mailbox contents when root logs in.
+
+How it works:
+ChatMax uses eval() to parse inbox messages which allows JavaScript injection. We send a message to root containing JavaScript that executes when root opens their inbox. The script reads all messages displayed on the page and sends them back to our inbox using ChatMax's own messaging API.
+
+Attack execution:
+
+Step 1: Send the malicious message
+Run the provided script as a non-root user:
+    python3 send_exfil.py
+
+This sends a message to root with embedded JavaScript in the body. The message gets stored in root's inbox file at inboxes/114-111-111-116.inbox
+
+Step 2: Wait for root to log in
+When root opens ChatMax and logs in, the client-side JavaScript loads root's inbox. Because ChatMax uses eval() to deserialize messages, our JavaScript payload executes in root's browser context.
+
+Step 3: Payload executes automatically
+The JavaScript does three things:
+1. Finds all textarea elements on the page (these contain the inbox messages)
+2. Concatenates all the message contents together
+3. Sends them back to the attacker's inbox using the ChatMax messaging API
+
+Step 4: Retrieve stolen data
+Log back in as the attacker user (inhibitor) and check the inbox. There will be a message from root containing "EXFILTRATED:" followed by all of root's message data.
+
+Why this works:
+In chatmax-min.js line ~30, the code does:
+    var _8="(function(){ return "+_6[i]+";})()";
+    _7.push(eval(_8));
+
+This eval() executes any code in the message body. Our <script> tag gets evaluated and runs with full access to the DOM and JavaScript context, including root's messages and the chatmax.scramble() function needed to send messages.
+
+Testing:
+Start proton server, run send_exfil.py to inject the payload, then open a browser and log in as root. The JavaScript executes silently when root's inbox loads. Log back in as inhibitor to see the exfiltrated data.
+
+Files:
+send_exfil.py - Python script that sends the malicious message to root
+exfiltration.txt - This file, explains the attack

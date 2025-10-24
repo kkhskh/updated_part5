@@ -1,0 +1,21 @@
+Question 1. What are the decryption key(s)?
+            Represent all binary data as hex strings.
+
+3b99c216f1ae2dd69b70f5e800fc9aec
+
+Question 2: Are the keys above symmetric or asymmetric? What type of keys are
+            they (e.g. RSA)?
+
+The key is symmetric. It is an AES-128 key, which is a 128-bit Advanced Encryption Standard key that operates in ECB mode.
+
+Question 3. Describe the reverse engineering methods by which you discovered the
+            key(s).
+
+I started by examining the exported functions in libpassdb.so.1.0 using nm and discovered that the library calls a function named AES128_ECB_decrypt. This told me the encryption algorithm being used. Next, I used objdump and gdb to disassemble the get_passwd_entry function to understand how the decryption worked. In the assembly code, I found an instruction at address 0x9d8 that loads an address using "lea 0x40(%eax),%edx" right before calling the AES128_ECB_decrypt function. This instruction calculates the location of the encryption key by adding 0x40 to a base address stored in the eax register. I then used readelf to find where the data section was located in memory, which turned out to be at virtual address 0x203c. By adding the 0x40 offset to this base address, I determined the key was stored at 0x207c. Finally, I used objdump to dump the contents of the data section and extracted the 16-byte key value from that location.
+
+Question 4. Describe the manner in which you actually decrypted the database.
+            (note that your method of decryption should actually use the key
+            obtained, and thus should not rely on running any function in
+            libpassdb).
+
+I wrote a Python script that performs the decryption without using any functions from libpassdb. First, I converted the hexadecimal key string into binary format using binascii.unhexlify. Then I read the entire password.db file as binary data. Using the PyCryptodome library, I created an AES cipher object configured for ECB mode with the extracted key. I called the decrypt method on the cipher object to decrypt the entire database contents. After decryption, I processed the data by splitting it into 16-byte blocks. Each block contains a username as a null-terminated ASCII string followed by a 4-byte password hash. I parsed each block to extract the username and converted the hash bytes to hexadecimal format. Finally, I wrote all the username and hash pairs to decrypted_passwords.txt using the format "username:hash" with one entry per line.

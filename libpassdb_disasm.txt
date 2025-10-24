@@ -1,0 +1,477 @@
+
+leaked_app/libpassdb.so.1.0:     file format elf32-i386
+
+
+Disassembly of section .init:
+
+00000598 <_init>:
+ 598:	53                   	push   %ebx
+ 599:	83 ec 08             	sub    $0x8,%esp
+ 59c:	e8 ff 00 00 00       	call   6a0 <__x86.get_pc_thunk.bx>
+ 5a1:	81 c3 5f 1a 00 00    	add    $0x1a5f,%ebx
+ 5a7:	8b 83 f4 ff ff ff    	mov    -0xc(%ebx),%eax
+ 5ad:	85 c0                	test   %eax,%eax
+ 5af:	74 05                	je     5b6 <_init+0x1e>
+ 5b1:	e8 e2 00 00 00       	call   698 <__gmon_start__@plt>
+ 5b6:	83 c4 08             	add    $0x8,%esp
+ 5b9:	5b                   	pop    %ebx
+ 5ba:	c3                   	ret    
+
+Disassembly of section .plt:
+
+000005c0 <.plt>:
+ 5c0:	ff b3 04 00 00 00    	push   0x4(%ebx)
+ 5c6:	ff a3 08 00 00 00    	jmp    *0x8(%ebx)
+ 5cc:	00 00                	add    %al,(%eax)
+	...
+
+000005d0 <close_passwd_file@plt>:
+ 5d0:	ff a3 0c 00 00 00    	jmp    *0xc(%ebx)
+ 5d6:	68 00 00 00 00       	push   $0x0
+ 5db:	e9 e0 ff ff ff       	jmp    5c0 <.plt>
+
+000005e0 <__stack_chk_fail@plt>:
+ 5e0:	ff a3 10 00 00 00    	jmp    *0x10(%ebx)
+ 5e6:	68 08 00 00 00       	push   $0x8
+ 5eb:	e9 d0 ff ff ff       	jmp    5c0 <.plt>
+
+000005f0 <perror@plt>:
+ 5f0:	ff a3 14 00 00 00    	jmp    *0x14(%ebx)
+ 5f6:	68 10 00 00 00       	push   $0x10
+ 5fb:	e9 c0 ff ff ff       	jmp    5c0 <.plt>
+
+00000600 <fwrite@plt>:
+ 600:	ff a3 18 00 00 00    	jmp    *0x18(%ebx)
+ 606:	68 18 00 00 00       	push   $0x18
+ 60b:	e9 b0 ff ff ff       	jmp    5c0 <.plt>
+
+00000610 <__fxstat@plt>:
+ 610:	ff a3 1c 00 00 00    	jmp    *0x1c(%ebx)
+ 616:	68 20 00 00 00       	push   $0x20
+ 61b:	e9 a0 ff ff ff       	jmp    5c0 <.plt>
+
+00000620 <exit@plt>:
+ 620:	ff a3 20 00 00 00    	jmp    *0x20(%ebx)
+ 626:	68 28 00 00 00       	push   $0x28
+ 62b:	e9 90 ff ff ff       	jmp    5c0 <.plt>
+
+00000630 <open@plt>:
+ 630:	ff a3 24 00 00 00    	jmp    *0x24(%ebx)
+ 636:	68 30 00 00 00       	push   $0x30
+ 63b:	e9 80 ff ff ff       	jmp    5c0 <.plt>
+
+00000640 <AES128_ECB_decrypt@plt>:
+ 640:	ff a3 28 00 00 00    	jmp    *0x28(%ebx)
+ 646:	68 38 00 00 00       	push   $0x38
+ 64b:	e9 70 ff ff ff       	jmp    5c0 <.plt>
+
+00000650 <mmap@plt>:
+ 650:	ff a3 2c 00 00 00    	jmp    *0x2c(%ebx)
+ 656:	68 40 00 00 00       	push   $0x40
+ 65b:	e9 60 ff ff ff       	jmp    5c0 <.plt>
+
+00000660 <fprintf@plt>:
+ 660:	ff a3 30 00 00 00    	jmp    *0x30(%ebx)
+ 666:	68 48 00 00 00       	push   $0x48
+ 66b:	e9 50 ff ff ff       	jmp    5c0 <.plt>
+
+00000670 <munmap@plt>:
+ 670:	ff a3 34 00 00 00    	jmp    *0x34(%ebx)
+ 676:	68 50 00 00 00       	push   $0x50
+ 67b:	e9 40 ff ff ff       	jmp    5c0 <.plt>
+
+00000680 <close@plt>:
+ 680:	ff a3 38 00 00 00    	jmp    *0x38(%ebx)
+ 686:	68 58 00 00 00       	push   $0x58
+ 68b:	e9 30 ff ff ff       	jmp    5c0 <.plt>
+
+Disassembly of section .plt.got:
+
+00000690 <__cxa_finalize@plt>:
+ 690:	ff a3 f0 ff ff ff    	jmp    *-0x10(%ebx)
+ 696:	66 90                	xchg   %ax,%ax
+
+00000698 <__gmon_start__@plt>:
+ 698:	ff a3 f4 ff ff ff    	jmp    *-0xc(%ebx)
+ 69e:	66 90                	xchg   %ax,%ax
+
+Disassembly of section .text:
+
+000006a0 <__x86.get_pc_thunk.bx>:
+ 6a0:	8b 1c 24             	mov    (%esp),%ebx
+ 6a3:	c3                   	ret    
+ 6a4:	66 90                	xchg   %ax,%ax
+ 6a6:	66 90                	xchg   %ax,%ax
+ 6a8:	66 90                	xchg   %ax,%ax
+ 6aa:	66 90                	xchg   %ax,%ax
+ 6ac:	66 90                	xchg   %ax,%ax
+ 6ae:	66 90                	xchg   %ax,%ax
+
+000006b0 <deregister_tm_clones>:
+ 6b0:	e8 17 01 00 00       	call   7cc <__x86.get_pc_thunk.dx>
+ 6b5:	81 c2 4b 19 00 00    	add    $0x194b,%edx
+ 6bb:	8d 8a 50 00 00 00    	lea    0x50(%edx),%ecx
+ 6c1:	8d 82 53 00 00 00    	lea    0x53(%edx),%eax
+ 6c7:	29 c8                	sub    %ecx,%eax
+ 6c9:	83 f8 06             	cmp    $0x6,%eax
+ 6cc:	76 17                	jbe    6e5 <deregister_tm_clones+0x35>
+ 6ce:	8b 82 e8 ff ff ff    	mov    -0x18(%edx),%eax
+ 6d4:	85 c0                	test   %eax,%eax
+ 6d6:	74 0d                	je     6e5 <deregister_tm_clones+0x35>
+ 6d8:	55                   	push   %ebp
+ 6d9:	89 e5                	mov    %esp,%ebp
+ 6db:	83 ec 14             	sub    $0x14,%esp
+ 6de:	51                   	push   %ecx
+ 6df:	ff d0                	call   *%eax
+ 6e1:	83 c4 10             	add    $0x10,%esp
+ 6e4:	c9                   	leave  
+ 6e5:	f3 c3                	repz ret 
+ 6e7:	89 f6                	mov    %esi,%esi
+ 6e9:	8d bc 27 00 00 00 00 	lea    0x0(%edi,%eiz,1),%edi
+
+000006f0 <register_tm_clones>:
+ 6f0:	e8 d7 00 00 00       	call   7cc <__x86.get_pc_thunk.dx>
+ 6f5:	81 c2 0b 19 00 00    	add    $0x190b,%edx
+ 6fb:	55                   	push   %ebp
+ 6fc:	8d 8a 50 00 00 00    	lea    0x50(%edx),%ecx
+ 702:	8d 82 50 00 00 00    	lea    0x50(%edx),%eax
+ 708:	89 e5                	mov    %esp,%ebp
+ 70a:	53                   	push   %ebx
+ 70b:	29 c8                	sub    %ecx,%eax
+ 70d:	c1 f8 02             	sar    $0x2,%eax
+ 710:	83 ec 04             	sub    $0x4,%esp
+ 713:	89 c3                	mov    %eax,%ebx
+ 715:	c1 eb 1f             	shr    $0x1f,%ebx
+ 718:	01 d8                	add    %ebx,%eax
+ 71a:	d1 f8                	sar    %eax
+ 71c:	74 14                	je     732 <register_tm_clones+0x42>
+ 71e:	8b 92 fc ff ff ff    	mov    -0x4(%edx),%edx
+ 724:	85 d2                	test   %edx,%edx
+ 726:	74 0a                	je     732 <register_tm_clones+0x42>
+ 728:	83 ec 08             	sub    $0x8,%esp
+ 72b:	50                   	push   %eax
+ 72c:	51                   	push   %ecx
+ 72d:	ff d2                	call   *%edx
+ 72f:	83 c4 10             	add    $0x10,%esp
+ 732:	8b 5d fc             	mov    -0x4(%ebp),%ebx
+ 735:	c9                   	leave  
+ 736:	c3                   	ret    
+ 737:	89 f6                	mov    %esi,%esi
+ 739:	8d bc 27 00 00 00 00 	lea    0x0(%edi,%eiz,1),%edi
+
+00000740 <__do_global_dtors_aux>:
+ 740:	55                   	push   %ebp
+ 741:	89 e5                	mov    %esp,%ebp
+ 743:	53                   	push   %ebx
+ 744:	e8 57 ff ff ff       	call   6a0 <__x86.get_pc_thunk.bx>
+ 749:	81 c3 b7 18 00 00    	add    $0x18b7,%ebx
+ 74f:	83 ec 04             	sub    $0x4,%esp
+ 752:	80 bb 50 00 00 00 00 	cmpb   $0x0,0x50(%ebx)
+ 759:	75 27                	jne    782 <__do_global_dtors_aux+0x42>
+ 75b:	8b 83 f0 ff ff ff    	mov    -0x10(%ebx),%eax
+ 761:	85 c0                	test   %eax,%eax
+ 763:	74 11                	je     776 <__do_global_dtors_aux+0x36>
+ 765:	83 ec 0c             	sub    $0xc,%esp
+ 768:	ff b3 3c 00 00 00    	push   0x3c(%ebx)
+ 76e:	e8 1d ff ff ff       	call   690 <__cxa_finalize@plt>
+ 773:	83 c4 10             	add    $0x10,%esp
+ 776:	e8 35 ff ff ff       	call   6b0 <deregister_tm_clones>
+ 77b:	c6 83 50 00 00 00 01 	movb   $0x1,0x50(%ebx)
+ 782:	8b 5d fc             	mov    -0x4(%ebp),%ebx
+ 785:	c9                   	leave  
+ 786:	c3                   	ret    
+ 787:	89 f6                	mov    %esi,%esi
+ 789:	8d bc 27 00 00 00 00 	lea    0x0(%edi,%eiz,1),%edi
+
+00000790 <frame_dummy>:
+ 790:	e8 37 00 00 00       	call   7cc <__x86.get_pc_thunk.dx>
+ 795:	81 c2 6b 18 00 00    	add    $0x186b,%edx
+ 79b:	8d 82 fc fe ff ff    	lea    -0x104(%edx),%eax
+ 7a1:	8b 08                	mov    (%eax),%ecx
+ 7a3:	85 c9                	test   %ecx,%ecx
+ 7a5:	75 09                	jne    7b0 <frame_dummy+0x20>
+ 7a7:	e9 44 ff ff ff       	jmp    6f0 <register_tm_clones>
+ 7ac:	8d 74 26 00          	lea    0x0(%esi,%eiz,1),%esi
+ 7b0:	8b 92 f8 ff ff ff    	mov    -0x8(%edx),%edx
+ 7b6:	85 d2                	test   %edx,%edx
+ 7b8:	74 ed                	je     7a7 <frame_dummy+0x17>
+ 7ba:	55                   	push   %ebp
+ 7bb:	89 e5                	mov    %esp,%ebp
+ 7bd:	83 ec 14             	sub    $0x14,%esp
+ 7c0:	50                   	push   %eax
+ 7c1:	ff d2                	call   *%edx
+ 7c3:	83 c4 10             	add    $0x10,%esp
+ 7c6:	c9                   	leave  
+ 7c7:	e9 24 ff ff ff       	jmp    6f0 <register_tm_clones>
+
+000007cc <__x86.get_pc_thunk.dx>:
+ 7cc:	8b 14 24             	mov    (%esp),%edx
+ 7cf:	c3                   	ret    
+
+000007d0 <load_passwd_file>:
+ 7d0:	55                   	push   %ebp
+ 7d1:	89 e5                	mov    %esp,%ebp
+ 7d3:	53                   	push   %ebx
+ 7d4:	83 ec 74             	sub    $0x74,%esp
+ 7d7:	e8 c4 fe ff ff       	call   6a0 <__x86.get_pc_thunk.bx>
+ 7dc:	81 c3 24 18 00 00    	add    $0x1824,%ebx
+ 7e2:	8b 45 08             	mov    0x8(%ebp),%eax
+ 7e5:	89 45 94             	mov    %eax,-0x6c(%ebp)
+ 7e8:	65 a1 14 00 00 00    	mov    %gs:0x14,%eax
+ 7ee:	89 45 f4             	mov    %eax,-0xc(%ebp)
+ 7f1:	31 c0                	xor    %eax,%eax
+ 7f3:	8b 83 54 00 00 00    	mov    0x54(%ebx),%eax
+ 7f9:	85 c0                	test   %eax,%eax
+ 7fb:	74 05                	je     802 <load_passwd_file+0x32>
+ 7fd:	e8 ce fd ff ff       	call   5d0 <close_passwd_file@plt>
+ 802:	83 ec 08             	sub    $0x8,%esp
+ 805:	6a 00                	push   $0x0
+ 807:	ff 75 94             	push   -0x6c(%ebp)
+ 80a:	e8 21 fe ff ff       	call   630 <open@plt>
+ 80f:	83 c4 10             	add    $0x10,%esp
+ 812:	89 45 98             	mov    %eax,-0x68(%ebp)
+ 815:	83 7d 98 ff          	cmpl   $0xffffffff,-0x68(%ebp)
+ 819:	75 1c                	jne    837 <load_passwd_file+0x67>
+ 81b:	83 ec 0c             	sub    $0xc,%esp
+ 81e:	8d 83 e8 ea ff ff    	lea    -0x1518(%ebx),%eax
+ 824:	50                   	push   %eax
+ 825:	e8 c6 fd ff ff       	call   5f0 <perror@plt>
+ 82a:	83 c4 10             	add    $0x10,%esp
+ 82d:	83 ec 0c             	sub    $0xc,%esp
+ 830:	6a ff                	push   $0xffffffff
+ 832:	e8 e9 fd ff ff       	call   620 <exit@plt>
+ 837:	83 ec 08             	sub    $0x8,%esp
+ 83a:	8d 45 9c             	lea    -0x64(%ebp),%eax
+ 83d:	50                   	push   %eax
+ 83e:	ff 75 98             	push   -0x68(%ebp)
+ 841:	e8 4a 02 00 00       	call   a90 <__fstat>
+ 846:	83 c4 10             	add    $0x10,%esp
+ 849:	83 f8 ff             	cmp    $0xffffffff,%eax
+ 84c:	75 1c                	jne    86a <load_passwd_file+0x9a>
+ 84e:	83 ec 0c             	sub    $0xc,%esp
+ 851:	8d 83 02 eb ff ff    	lea    -0x14fe(%ebx),%eax
+ 857:	50                   	push   %eax
+ 858:	e8 93 fd ff ff       	call   5f0 <perror@plt>
+ 85d:	83 c4 10             	add    $0x10,%esp
+ 860:	83 ec 0c             	sub    $0xc,%esp
+ 863:	6a ff                	push   $0xffffffff
+ 865:	e8 b6 fd ff ff       	call   620 <exit@plt>
+ 86a:	8b 45 ac             	mov    -0x54(%ebp),%eax
+ 86d:	25 00 f0 00 00       	and    $0xf000,%eax
+ 872:	3d 00 80 00 00       	cmp    $0x8000,%eax
+ 877:	74 28                	je     8a1 <load_passwd_file+0xd1>
+ 879:	8b 83 ec ff ff ff    	mov    -0x14(%ebx),%eax
+ 87f:	8b 00                	mov    (%eax),%eax
+ 881:	83 ec 04             	sub    $0x4,%esp
+ 884:	ff 75 94             	push   -0x6c(%ebp)
+ 887:	8d 93 20 eb ff ff    	lea    -0x14e0(%ebx),%edx
+ 88d:	52                   	push   %edx
+ 88e:	50                   	push   %eax
+ 88f:	e8 cc fd ff ff       	call   660 <fprintf@plt>
+ 894:	83 c4 10             	add    $0x10,%esp
+ 897:	83 ec 0c             	sub    $0xc,%esp
+ 89a:	6a ff                	push   $0xffffffff
+ 89c:	e8 7f fd ff ff       	call   620 <exit@plt>
+ 8a1:	8b 45 c8             	mov    -0x38(%ebp),%eax
+ 8a4:	89 83 58 00 00 00    	mov    %eax,0x58(%ebx)
+ 8aa:	8b 83 58 00 00 00    	mov    0x58(%ebx),%eax
+ 8b0:	83 ec 08             	sub    $0x8,%esp
+ 8b3:	6a 00                	push   $0x0
+ 8b5:	ff 75 98             	push   -0x68(%ebp)
+ 8b8:	6a 01                	push   $0x1
+ 8ba:	6a 01                	push   $0x1
+ 8bc:	50                   	push   %eax
+ 8bd:	6a 00                	push   $0x0
+ 8bf:	e8 8c fd ff ff       	call   650 <mmap@plt>
+ 8c4:	83 c4 20             	add    $0x20,%esp
+ 8c7:	89 83 54 00 00 00    	mov    %eax,0x54(%ebx)
+ 8cd:	8b 83 54 00 00 00    	mov    0x54(%ebx),%eax
+ 8d3:	83 f8 ff             	cmp    $0xffffffff,%eax
+ 8d6:	75 1c                	jne    8f4 <load_passwd_file+0x124>
+ 8d8:	83 ec 0c             	sub    $0xc,%esp
+ 8db:	8d 83 4f eb ff ff    	lea    -0x14b1(%ebx),%eax
+ 8e1:	50                   	push   %eax
+ 8e2:	e8 09 fd ff ff       	call   5f0 <perror@plt>
+ 8e7:	83 c4 10             	add    $0x10,%esp
+ 8ea:	83 ec 0c             	sub    $0xc,%esp
+ 8ed:	6a ff                	push   $0xffffffff
+ 8ef:	e8 2c fd ff ff       	call   620 <exit@plt>
+ 8f4:	83 ec 0c             	sub    $0xc,%esp
+ 8f7:	ff 75 98             	push   -0x68(%ebp)
+ 8fa:	e8 81 fd ff ff       	call   680 <close@plt>
+ 8ff:	83 c4 10             	add    $0x10,%esp
+ 902:	90                   	nop
+ 903:	8b 45 f4             	mov    -0xc(%ebp),%eax
+ 906:	65 33 05 14 00 00 00 	xor    %gs:0x14,%eax
+ 90d:	74 05                	je     914 <load_passwd_file+0x144>
+ 90f:	e8 ac 01 00 00       	call   ac0 <__stack_chk_fail_local>
+ 914:	8b 5d fc             	mov    -0x4(%ebp),%ebx
+ 917:	c9                   	leave  
+ 918:	c3                   	ret    
+
+00000919 <get_passwd_entry>:
+ 919:	55                   	push   %ebp
+ 91a:	89 e5                	mov    %esp,%ebp
+ 91c:	53                   	push   %ebx
+ 91d:	83 ec 44             	sub    $0x44,%esp
+ 920:	e8 5b 01 00 00       	call   a80 <__x86.get_pc_thunk.ax>
+ 925:	05 db 16 00 00       	add    $0x16db,%eax
+ 92a:	8b 55 0c             	mov    0xc(%ebp),%edx
+ 92d:	89 55 d4             	mov    %edx,-0x2c(%ebp)
+ 930:	65 8b 0d 14 00 00 00 	mov    %gs:0x14,%ecx
+ 937:	89 4d f4             	mov    %ecx,-0xc(%ebp)
+ 93a:	31 c9                	xor    %ecx,%ecx
+ 93c:	8b 90 54 00 00 00    	mov    0x54(%eax),%edx
+ 942:	85 d2                	test   %edx,%edx
+ 944:	75 0a                	jne    950 <get_passwd_entry+0x37>
+ 946:	b8 00 00 00 00       	mov    $0x0,%eax
+ 94b:	e9 d3 00 00 00       	jmp    a23 <get_passwd_entry+0x10a>
+ 950:	8b 90 58 00 00 00    	mov    0x58(%eax),%edx
+ 956:	89 d1                	mov    %edx,%ecx
+ 958:	c1 e9 04             	shr    $0x4,%ecx
+ 95b:	8b 55 08             	mov    0x8(%ebp),%edx
+ 95e:	39 d1                	cmp    %edx,%ecx
+ 960:	77 28                	ja     98a <get_passwd_entry+0x71>
+ 962:	8b 90 ec ff ff ff    	mov    -0x14(%eax),%edx
+ 968:	8b 12                	mov    (%edx),%edx
+ 96a:	52                   	push   %edx
+ 96b:	6a 36                	push   $0x36
+ 96d:	6a 01                	push   $0x1
+ 96f:	8d 90 6c eb ff ff    	lea    -0x1494(%eax),%edx
+ 975:	52                   	push   %edx
+ 976:	89 c3                	mov    %eax,%ebx
+ 978:	e8 83 fc ff ff       	call   600 <fwrite@plt>
+ 97d:	83 c4 10             	add    $0x10,%esp
+ 980:	b8 00 00 00 00       	mov    $0x0,%eax
+ 985:	e9 99 00 00 00       	jmp    a23 <get_passwd_entry+0x10a>
+ 98a:	8b 90 54 00 00 00    	mov    0x54(%eax),%edx
+ 990:	89 55 e0             	mov    %edx,-0x20(%ebp)
+ 993:	8b 55 08             	mov    0x8(%ebp),%edx
+ 996:	89 d1                	mov    %edx,%ecx
+ 998:	c1 e1 04             	shl    $0x4,%ecx
+ 99b:	8b 55 e0             	mov    -0x20(%ebp),%edx
+ 99e:	01 ca                	add    %ecx,%edx
+ 9a0:	8b 1a                	mov    (%edx),%ebx
+ 9a2:	89 5d b8             	mov    %ebx,-0x48(%ebp)
+ 9a5:	8b 5a 04             	mov    0x4(%edx),%ebx
+ 9a8:	89 5d bc             	mov    %ebx,-0x44(%ebp)
+ 9ab:	8b 5a 08             	mov    0x8(%edx),%ebx
+ 9ae:	89 5d c0             	mov    %ebx,-0x40(%ebp)
+ 9b1:	8b 5a 0c             	mov    0xc(%edx),%ebx
+ 9b4:	89 5d c4             	mov    %ebx,-0x3c(%ebp)
+ 9b7:	8b 55 d4             	mov    -0x2c(%ebp),%edx
+ 9ba:	8b 4d b8             	mov    -0x48(%ebp),%ecx
+ 9bd:	89 0a                	mov    %ecx,(%edx)
+ 9bf:	8b 5d bc             	mov    -0x44(%ebp),%ebx
+ 9c2:	89 5a 04             	mov    %ebx,0x4(%edx)
+ 9c5:	8b 4d c0             	mov    -0x40(%ebp),%ecx
+ 9c8:	89 4a 08             	mov    %ecx,0x8(%edx)
+ 9cb:	8b 5d c4             	mov    -0x3c(%ebp),%ebx
+ 9ce:	89 5a 0c             	mov    %ebx,0xc(%edx)
+ 9d1:	83 ec 04             	sub    $0x4,%esp
+ 9d4:	8d 55 e4             	lea    -0x1c(%ebp),%edx
+ 9d7:	52                   	push   %edx
+ 9d8:	8d 90 40 00 00 00    	lea    0x40(%eax),%edx
+ 9de:	52                   	push   %edx
+ 9df:	ff 75 d4             	push   -0x2c(%ebp)
+ 9e2:	89 c3                	mov    %eax,%ebx
+ 9e4:	e8 57 fc ff ff       	call   640 <AES128_ECB_decrypt@plt>
+ 9e9:	83 c4 10             	add    $0x10,%esp
+ 9ec:	8b 45 e4             	mov    -0x1c(%ebp),%eax
+ 9ef:	89 45 b8             	mov    %eax,-0x48(%ebp)
+ 9f2:	8b 45 e8             	mov    -0x18(%ebp),%eax
+ 9f5:	89 45 bc             	mov    %eax,-0x44(%ebp)
+ 9f8:	8b 45 ec             	mov    -0x14(%ebp),%eax
+ 9fb:	89 45 c0             	mov    %eax,-0x40(%ebp)
+ 9fe:	8b 45 f0             	mov    -0x10(%ebp),%eax
+ a01:	89 45 c4             	mov    %eax,-0x3c(%ebp)
+ a04:	8b 45 d4             	mov    -0x2c(%ebp),%eax
+ a07:	8b 4d b8             	mov    -0x48(%ebp),%ecx
+ a0a:	89 08                	mov    %ecx,(%eax)
+ a0c:	8b 5d bc             	mov    -0x44(%ebp),%ebx
+ a0f:	89 58 04             	mov    %ebx,0x4(%eax)
+ a12:	8b 4d c0             	mov    -0x40(%ebp),%ecx
+ a15:	89 48 08             	mov    %ecx,0x8(%eax)
+ a18:	8b 5d c4             	mov    -0x3c(%ebp),%ebx
+ a1b:	89 58 0c             	mov    %ebx,0xc(%eax)
+ a1e:	b8 01 00 00 00       	mov    $0x1,%eax
+ a23:	8b 5d f4             	mov    -0xc(%ebp),%ebx
+ a26:	65 33 1d 14 00 00 00 	xor    %gs:0x14,%ebx
+ a2d:	74 05                	je     a34 <get_passwd_entry+0x11b>
+ a2f:	e8 8c 00 00 00       	call   ac0 <__stack_chk_fail_local>
+ a34:	8b 5d fc             	mov    -0x4(%ebp),%ebx
+ a37:	c9                   	leave  
+ a38:	c3                   	ret    
+
+00000a39 <close_passwd_file>:
+ a39:	55                   	push   %ebp
+ a3a:	89 e5                	mov    %esp,%ebp
+ a3c:	53                   	push   %ebx
+ a3d:	83 ec 04             	sub    $0x4,%esp
+ a40:	e8 5b fc ff ff       	call   6a0 <__x86.get_pc_thunk.bx>
+ a45:	81 c3 bb 15 00 00    	add    $0x15bb,%ebx
+ a4b:	8b 83 54 00 00 00    	mov    0x54(%ebx),%eax
+ a51:	85 c0                	test   %eax,%eax
+ a53:	74 25                	je     a7a <close_passwd_file+0x41>
+ a55:	8b 83 58 00 00 00    	mov    0x58(%ebx),%eax
+ a5b:	89 c2                	mov    %eax,%edx
+ a5d:	8b 83 54 00 00 00    	mov    0x54(%ebx),%eax
+ a63:	83 ec 08             	sub    $0x8,%esp
+ a66:	52                   	push   %edx
+ a67:	50                   	push   %eax
+ a68:	e8 03 fc ff ff       	call   670 <munmap@plt>
+ a6d:	83 c4 10             	add    $0x10,%esp
+ a70:	c7 83 54 00 00 00 00 	movl   $0x0,0x54(%ebx)
+ a77:	00 00 00 
+ a7a:	90                   	nop
+ a7b:	8b 5d fc             	mov    -0x4(%ebp),%ebx
+ a7e:	c9                   	leave  
+ a7f:	c3                   	ret    
+
+00000a80 <__x86.get_pc_thunk.ax>:
+ a80:	8b 04 24             	mov    (%esp),%eax
+ a83:	c3                   	ret    
+ a84:	66 90                	xchg   %ax,%ax
+ a86:	66 90                	xchg   %ax,%ax
+ a88:	66 90                	xchg   %ax,%ax
+ a8a:	66 90                	xchg   %ax,%ax
+ a8c:	66 90                	xchg   %ax,%ax
+ a8e:	66 90                	xchg   %ax,%ax
+
+00000a90 <__fstat>:
+ a90:	53                   	push   %ebx
+ a91:	e8 0a fc ff ff       	call   6a0 <__x86.get_pc_thunk.bx>
+ a96:	81 c3 6a 15 00 00    	add    $0x156a,%ebx
+ a9c:	83 ec 0c             	sub    $0xc,%esp
+ a9f:	ff 74 24 18          	push   0x18(%esp)
+ aa3:	ff 74 24 18          	push   0x18(%esp)
+ aa7:	6a 03                	push   $0x3
+ aa9:	e8 62 fb ff ff       	call   610 <__fxstat@plt>
+ aae:	83 c4 18             	add    $0x18,%esp
+ ab1:	5b                   	pop    %ebx
+ ab2:	c3                   	ret    
+ ab3:	66 90                	xchg   %ax,%ax
+ ab5:	66 90                	xchg   %ax,%ax
+ ab7:	66 90                	xchg   %ax,%ax
+ ab9:	66 90                	xchg   %ax,%ax
+ abb:	66 90                	xchg   %ax,%ax
+ abd:	66 90                	xchg   %ax,%ax
+ abf:	90                   	nop
+
+00000ac0 <__stack_chk_fail_local>:
+ ac0:	53                   	push   %ebx
+ ac1:	e8 da fb ff ff       	call   6a0 <__x86.get_pc_thunk.bx>
+ ac6:	81 c3 3a 15 00 00    	add    $0x153a,%ebx
+ acc:	83 ec 08             	sub    $0x8,%esp
+ acf:	e8 0c fb ff ff       	call   5e0 <__stack_chk_fail@plt>
+
+Disassembly of section .fini:
+
+00000ad4 <_fini>:
+ ad4:	53                   	push   %ebx
+ ad5:	83 ec 08             	sub    $0x8,%esp
+ ad8:	e8 c3 fb ff ff       	call   6a0 <__x86.get_pc_thunk.bx>
+ add:	81 c3 23 15 00 00    	add    $0x1523,%ebx
+ ae3:	83 c4 08             	add    $0x8,%esp
+ ae6:	5b                   	pop    %ebx
+ ae7:	c3                   	ret    
